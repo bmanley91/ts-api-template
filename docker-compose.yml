@@ -1,0 +1,20 @@
+version: '2'
+
+services:
+  app:
+    image: 'bmanley/ts-api-template'
+    container_name: 'ts-api-template'
+    ports:
+      - 8080:8080
+    depends_on:
+      - postgres
+  
+  postgres:
+    image: 'postgres:15-alpine'
+    container_name: 'ts-api-template-postgres'
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=ts-api-template
+      - POSTGRES_PASSWORD=ts_api_template
+      - POSTGRES_DB=ts_api_template_local
