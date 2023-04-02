@@ -1,20 +1,51 @@
-version: '2'
+version: '3.8'
 
 services:
   app:
+    build:
+      context: .
     image: 'bmanley/ts-api-template'
-    container_name: 'ts-api-template'
+    container_name: 'ts-api-template-service'
     ports:
       - 8080:8080
     depends_on:
-      - postgres
+      - migrations
+
+  migrations:
+    build:
+      context: .
+    command:
+      [
+        "./wait-for-it/wait-for-it.sh",
+        "db:5432",
+        "--",
+        "yarn",
+        "migrate"
+      ]
+    links:
+      - db
+    depends_on:
+      - db
+    environment:
+      - DB_HOST=db
   
-  postgres:
-    image: 'postgres:15-alpine'
+  db:
+    image: 'postgres:15'
     container_name: 'ts-api-template-postgres'
     ports:
       - 5432:5432
+    restart: always
     environment:
-      - POSTGRES_USER=ts-api-template
-      - POSTGRES_PASSWORD=ts_api_template
-      - POSTGRES_DB=ts_api_template_local
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=ts_api_template
+    hostname: postgres
+    # volumes:
+    # - ./pg_data:/var/lib/postgresql/data
+
+# volumes:
+#   pg_data: null
+
+networks:
+  mynet:
+    name: ts-api-template-network

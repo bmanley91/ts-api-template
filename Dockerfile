@@ -16,5 +16,7 @@ RUN yarn build
 
 EXPOSE 8080
 
+RUN git clone https://github.com/vishnubob/wait-for-it.git
+
 CMD [ "node", "dist/server.js" ]
 

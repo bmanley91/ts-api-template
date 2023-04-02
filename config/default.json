@@ -1,0 +1,15 @@
+{
+    "db": {
+        "url": "postgres://postgres:postgres@postgres:5432/ts_api_template",
+        "tsconfig": "./tsconfig.json",
+        "migration-filename-format": "utc",
+        "migration-file-language": "ts",
+        "migrations-dir": "src/migrations",
+        "user": "postgres",
+        "password": "postgres",
+        "host": "postgres",
+        "port": 5432,
+        "database": "ts_api_template",
+        "ssl": true
+    }
+}

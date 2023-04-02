@@ -1,4 +1,5 @@
 import express from 'express';
+import { getConnection } from './database/postgres-connection';
 
 // Constants
 const PORT = 8080;
@@ -10,6 +11,8 @@ app.get('/', (_, res) => {
   res.send('Hello World');
 });
 
-app.listen(PORT, HOST, () => {
-  console.log(`Running on http://${HOST}:${PORT}`);
+getConnection().then(() => {
+    app.listen(PORT, HOST, () => {
+        console.log(`Running on http://${HOST}:${PORT}`);
+      });
 });
