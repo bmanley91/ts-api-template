@@ -1,0 +1,10 @@
+import { Router } from 'express';
+import helloController from '../controllers/hello.controller';
+
+const router = Router();
+
+router.get('/:id', helloController.getHello);
+
+router.post('/', helloController.createHello);
+
+export default router;
