@@ -1,10 +1,13 @@
 {
+    "app":{
+        "port": 8080
+    },
     "db": {
         "url": "postgres://postgres:postgres@postgres:5432/ts_api_template",
         "tsconfig": "./tsconfig.json",
         "migration-filename-format": "utc",
         "migration-file-language": "ts",
-        "migrations-dir": "src/migrations",
+        "migrations-dir": "src/infrastructure/database/migrations",
         "user": "postgres",
         "password": "postgres",
         "host": "postgres",
