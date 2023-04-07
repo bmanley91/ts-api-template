@@ -16,10 +16,10 @@ export class HelloController {
 
             // Return the created user with a 201 status code
             return res.status(201).json(newHello);
-        } catch (error: any) {
+        } catch (error) {
             console.error(error);
             // Handle errors and return an appropriate status code and message
-            return res.status(500).json({ message: error.message });
+            return res.status(500).json({ message: error });
         }
     }
 

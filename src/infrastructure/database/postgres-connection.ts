@@ -14,12 +14,12 @@ export const getConnection = async (): Promise<Client> => {
             database: dbConfig.database,
             user: dbConfig.user,
             password: dbConfig.password,
-          });
+        });
         await dbClient.connect();
         console.log('Connected to database!');
     }
 
-    return dbClient
+    return dbClient;
 };
 
 

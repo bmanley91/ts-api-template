@@ -4,7 +4,7 @@ import { createHelloValidationRules, validateCreateHello } from './hello.validat
 
 describe ('Hello Validator', () => {
     const app = express();
-    app.use(express.json())
+    app.use(express.json());
     app.post('/test', createHelloValidationRules(), validateCreateHello, (req: Request, res: Response) => res.status(201).send());
 
     it ('accepts a properly formed request', done => {
