@@ -1,5 +1,5 @@
 import { body, validationResult } from 'express-validator';
-import { NextFunction, Request, Response } from 'express'
+import { NextFunction, Request, Response } from 'express';
 
 export const validateCreateHello = (req: Request, res: Response, next: NextFunction) => {
     const errors = validationResult(req);
@@ -16,11 +16,11 @@ export const validateCreateHello = (req: Request, res: Response, next: NextFunct
     return res.status(422).json({
         errors: extractedErrors
     });
-}
+};
 
 export const createHelloValidationRules = () => {
     return [
         // Name must not be empty
         body('name').isLength({min: 1}),
-      ]
-}
+    ];
+};
