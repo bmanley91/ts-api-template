@@ -1,12 +1,7 @@
 import express, { Request, Response } from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
-import { getConnection } from './infrastructure/database/postgres-connection';
 import helloRoutes from './api/routes/hello.routes';
-
-// Constants
-const PORT = 8080;
-const HOST = '0.0.0.0';
 
 // App
 const app = express();
