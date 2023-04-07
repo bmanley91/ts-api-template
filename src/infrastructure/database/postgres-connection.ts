@@ -1,6 +1,7 @@
 import config from 'config';
 import { Client } from 'pg';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const dbConfig: any = config.get('db');
 
 let dbClient: Client;

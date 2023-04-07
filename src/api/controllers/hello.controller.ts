@@ -27,10 +27,10 @@ export class HelloController {
         try {
             const hello = await getHelloUsecase(req.params.id, new HelloRepository());
             return res.status(201).json(hello);
-        } catch (error: any) {
+        } catch (error) {
             console.error(error);
             // Handle errors and return an appropriate status code and message
-            return res.status(500).json({ message: error.message });
+            return res.status(500).json({ message: error });
         }
     }
 }
