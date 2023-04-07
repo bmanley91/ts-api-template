@@ -7,4 +7,4 @@ export const getHelloUsecase = async (id: string, helloRepo: HelloRepository): P
     console.log(`Found Hello: ${hello}`);
 
     return hello;
-}
+};
