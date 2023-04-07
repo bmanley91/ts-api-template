@@ -12,7 +12,24 @@ A template rest API written in typescript following Clean Architecture. This rep
 * Github Action CICD Configuration
 
 ## Setup
+Install target node version with [nvm](https://github.com/nvm-sh/nvm):
+```
+nvm install
+```
+
+Install dependencies with
+```
+yarn install
+```
 
 ## Build
+Compile typescript code with
+```
+yarn build
+```
 
 ## Test
+Run unit tests with
+```
+yarn test
+```
