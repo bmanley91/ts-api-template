@@ -10,7 +10,6 @@ export const validateCreateHello = (req: Request, res: Response, next: NextFunct
     
     console.warn(JSON.stringify(errors));
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const extractedErrors = errors.array().map((err) => {
         return {
             [err.param]: err.msg 
