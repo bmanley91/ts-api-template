@@ -1,5 +1,4 @@
-import { Hello } from "../../core/entities/hello.entity";
-import { createHelloUsecase } from "./create-hello.use-case";
+import { createHelloUsecase } from './create-hello.use-case';
 
 describe ('Create Hello Use Case', () => {
     const mockCreate = jest.fn();
@@ -8,7 +7,7 @@ describe ('Create Hello Use Case', () => {
     const mockHelloRepo = {
         create: mockCreate,
         findById: mockFind
-    }
+    };
 
     it ('Builds a greeting using the given name', async () => {
         const name = 'Bill';

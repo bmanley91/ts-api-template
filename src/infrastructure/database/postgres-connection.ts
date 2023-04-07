@@ -1,6 +1,7 @@
 import config from 'config';
 import { Client } from 'pg';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const dbConfig: any = config.get('db');
 
 let dbClient: Client;
@@ -14,12 +15,12 @@ export const getConnection = async (): Promise<Client> => {
             database: dbConfig.database,
             user: dbConfig.user,
             password: dbConfig.password,
-          });
+        });
         await dbClient.connect();
         console.log('Connected to database!');
     }
 
-    return dbClient
+    return dbClient;
 };
 
 
