@@ -4,11 +4,9 @@ import { NextFunction, Request, Response } from 'express'
 export const validateCreateHello = (req: Request, res: Response, next: NextFunction) => {
     const errors = validationResult(req);
 
-    console.log(`Processing req body: ${JSON.stringify(req.body)}`);
     if (errors.isEmpty()) {
         return next();
     }
-
     
     console.warn(JSON.stringify(errors));
 
