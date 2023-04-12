@@ -1,14 +1,18 @@
 import { body, validationResult } from 'express-validator';
 import { NextFunction, Request, Response } from 'express';
+import { logError, logInfo } from '../../infrastructure/util/logger';
 
 export const validateCreateHello = (req: Request, res: Response, next: NextFunction) => {
     const errors = validationResult(req);
 
+    logInfo(JSON.stringify(req.body));
+
     if (errors.isEmpty()) {
+        logInfo('No errors');
         return next();
     }
     
-    console.warn(JSON.stringify(errors));
+    logError(`uh oh! ${JSON.stringify(errors)}`);
 
     const extractedErrors = errors.array().map((err) => {
         return {

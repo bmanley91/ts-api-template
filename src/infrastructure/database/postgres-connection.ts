@@ -1,5 +1,6 @@
 import config from 'config';
 import { Client } from 'pg';
+import { logInfo } from '../util/logger';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const dbConfig: any = config.get('db');
@@ -8,7 +9,7 @@ let dbClient: Client;
 
 export const getConnection = async (): Promise<Client> => {
     if (!dbClient) {
-        console.log('Connecting to database...');
+        logInfo('Connecting to database...');
         dbClient = new Client({
             host: dbConfig.host,
             port: dbConfig.port,
@@ -17,7 +18,7 @@ export const getConnection = async (): Promise<Client> => {
             password: dbConfig.password,
         });
         await dbClient.connect();
-        console.log('Connected to database!');
+        logInfo('Connected to database!');
     }
 
     return dbClient;
