@@ -2,6 +2,7 @@ import express, { Request, Response } from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
 import helloRoutes from './api/routes/hello.routes';
+import { correlationMiddleware } from './api/middleware/logger.middleware';
 
 // App
 const app = express();
@@ -9,11 +10,12 @@ const app = express();
 // Middleware for handling CORS
 app.use(cors());
 
-// Middleware for logging
-app.use(morgan('combined'));
-
 // Middleware for JSON request parsing
 app.use(express.json());
+
+// Middleware for logging
+app.use(morgan('combined'));
+app.use(correlationMiddleware);
 
 // Middleware for URL-encoded request parsing
 app.use(express.urlencoded({ extended: true }));
