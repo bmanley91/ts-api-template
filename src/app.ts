@@ -23,6 +23,10 @@ app.use(express.urlencoded({ extended: true }));
 // Register routes
 app.use('/api/hello', helloRoutes);
 
+app.use('/health', (req: Request, res: Response) => {
+    res.status(200).json({ message: 'OK' });
+});
+
 // Catch-all route for handling 404 errors
 app.use('*', (req: Request, res: Response) => {
     res.status(404).json({ message: 'Resource not found' });
