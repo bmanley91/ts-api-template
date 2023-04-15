@@ -1,9 +1,10 @@
-import { getConnection } from '../../infrastructure/database/postgres-connection';
+import { Client } from 'pg';
 import { logError } from '../../infrastructure/util/logger';
+import { getConnection } from '../../infrastructure/database/postgres-connection';
 
-export const healthcheckUsecase = async (): Promise<boolean> => {
+export const healthcheckUsecase = async (getConnectionFunction: () => Promise<Client> = getConnection): Promise<boolean> => {
     try {
-        getConnection();
+        getConnectionFunction();
         return true;
     } catch (err) {
         logError(`Error connecting to database: ${err}`);
