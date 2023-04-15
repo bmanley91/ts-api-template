@@ -7,6 +7,7 @@ const dbConfig: any = config.get('db');
 
 let dbClient: Client;
 
+/* istanbul ignore next */
 export const getConnection = async (): Promise<Client> => {
     if (!dbClient) {
         logInfo('Connecting to database...');
