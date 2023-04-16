@@ -1,7 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import * as cls from 'cls-hooked';
 import { v4 as uuid } from 'uuid';
-import { logInfo } from '../../infrastructure/util/logger';
 
 const correlationContext = cls.createNamespace('correlationContext');
 
